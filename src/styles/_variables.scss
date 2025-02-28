@@ -84,3 +84,17 @@ $breakpoint-3xl: 1792px;
     @content;
   }
 }
+
+@mixin scale($coefficient, $properties) {
+  @each $prop, $value in $properties {
+    @if type-of($value) == 'number' and unit($value) == 'px' {
+      #{$prop}: scale-value($value, $coefficient);
+    } @else {
+      #{$prop}: $value;
+    }
+  }
+}
+
+@function scale-value($value, $coefficient) {
+  @return $value * $coefficient;
+}

@@ -4,11 +4,20 @@
   border-top: 1px solid #f7f4f1;
   padding-top: 68px;
   padding-bottom: 84px;
+
+  @include max-lg {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
 }
 
 .underground-layout {
   display: flex;
   justify-content: space-between;
+
+  @include max-lg {
+    flex-wrap: wrap;
+  }
 }
 
 .underground-layout__left {
@@ -22,15 +31,14 @@
 
 .underground-layout__middle {
   flex-grow: 1;
-  max-width: 40%;
+  max-width: max-content;
 
-  display: grid;
-  grid-template-columns: auto minmax(24px, 1fr) auto;
-  grid-template-rows: auto 40px auto;
-  grid-template-areas:
-    "first . second"
-    ". . ."
-    "agreement agreement agreement";
+  @include max-lg {
+    width: 100%;
+    max-width: unset;
+    order: -1;
+    margin-bottom: 48px;
+  }
 }
 
 .underground-layout__right {
@@ -40,18 +48,33 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 44px;
+
+  @include max-lg {
+    gap: 24px;
+  }
 }
 
 .underground-logo {
   display: block;
   background: url('../images/logo.png') no-repeat 50% 50%;
+  background-size: cover;
   width: 324px;
   height: 53px;
+
+  @include max-2xl {
+    width: calc(324px * 0.8);
+    height: calc(53px * 0.8);
+  }
+  @include max-lg {
+    margin-top: 30px;
+  }
 }
 
-.underground-contacts {}
+.underground-contacts {
+}
 
-.underground-contacts>*+* {
+.underground-contacts > * + * {
   margin-top: 15px;
 }
 
@@ -65,7 +88,7 @@
   font-weight: bold;
   margin-bottom: 8px;
   color: #7f5a44;
-  background: linear-gradient(90deg,#b7866d,#7f5a44);
+  background: linear-gradient(90deg, #b7866d, #7f5a44);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -94,11 +117,11 @@
 .underground-contacts__phone-value {
   display: block;
   font-size: 18px;
-  font-family: "PT Astra Serif";
+  font-family: 'PT Astra Serif';
   font-weight: bold;
   line-height: 1;
   color: #7f5a44;
-  background: linear-gradient(90deg,#b7866d,#7f5a44);
+  background: linear-gradient(90deg, #b7866d, #7f5a44);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -122,22 +145,21 @@
 .underground-contacts__email-value {
   display: block;
   font-size: 18px;
-  font-family: "PT Astra Serif";
+  font-family: 'PT Astra Serif';
   font-weight: bold;
   line-height: 1;
   color: #7f5a44;
-  background: linear-gradient(90deg,#b7866d,#7f5a44);
+  background: linear-gradient(90deg, #b7866d, #7f5a44);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .underground-menu {
-  display: flex;
-  flex-direction: column;
-  row-gap: 12px;
   font-size: 18px;
   line-height: 1.15;
-  font-family: "PT Astra Sans";
+  font-family: 'PT Astra Sans';
+  columns: 2;
+  column-gap: 100px;
 
   &_first {
     grid-area: first;
@@ -146,11 +168,51 @@
   &_second {
     grid-area: second;
   }
+
+  @include max-2xl {
+    column-gap: 40px;
+  }
+  @include max-xl {
+    column-gap: 20px;
+    font-size: 16px;
+  }
+  @include max-lg {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+}
+
+.underground-menu + .underground-menu {
+  margin-top: 36px;
+
+  @include max-lg {
+    margin-top: 24px;
+  }
+}
+
+.underground-menu li {
+  margin-bottom: 16px;
+  max-width: 280px;
+
+  @include max-xl {
+    margin-bottom: 12px;
+    max-width: 200px;
+  }
+  @include max-lg {
+    max-width: unset;
+    margin: 0;
+  }
+}
+
+.underground-menu li:last-child {
+  margin-bottom: 0;
 }
 
 .underground-menu a {
   color: rgb(51, 51, 51);
   text-decoration: underline;
+  display: inline-block;
 }
 
 .underground-menu a:hover {
@@ -158,48 +220,46 @@
   text-decoration: underline;
 }
 
-.underground-agreement {
-  grid-area: agreement;
-  font-size: 18px;
-  line-height: 1.15;
-  font-family: "PT Astra Sans";
-  color: rgb(51, 51, 51);
-  text-decoration: underline;
+.underground-share {
 }
-
-.underground-agreement:hover {
-  color: #b28772;
-  text-decoration: underline;
-}
-
-.underground-share {}
 
 .underground-share__title {
   margin-bottom: 12px;
   display: block;
   font-size: 18px;
-  font-family: "PT Astra Serif";
+  font-family: 'PT Astra Serif';
   font-weight: bold;
   line-height: 1;
   color: #7f5a44;
-  background: linear-gradient(90deg,#b7866d,#7f5a44);
+  background: linear-gradient(90deg, #b7866d, #7f5a44);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.underground-share__items {}
+.underground-share__items {
+  .ya-share2__badge {
+    border-radius: 12px;
+  }
+  .ya-share2__list.ya-share2__list_direction_horizontal > .ya-share2__item {
+    margin: 3px 6px 0 0;
+  }
+  .ya-share2__list.ya-share2__list_direction_horizontal {
+    margin-top: -3px;
+  }
+}
 
-.underground-vk {}
+.underground-vk {
+}
 
 .underground-vk__title {
   margin-bottom: 12px;
   display: block;
   font-size: 18px;
-  font-family: "PT Astra Serif";
+  font-family: 'PT Astra Serif';
   font-weight: bold;
   line-height: 1;
   color: #7f5a44;
-  background: linear-gradient(90deg,#b7866d,#7f5a44);
+  background: linear-gradient(90deg, #b7866d, #7f5a44);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -235,7 +295,8 @@
   gap: 36px;
 }
 
-.footer__counters {}
+.footer__counters {
+}
 
 .footer__sitemap {
   font-size: 12px;
@@ -257,11 +318,12 @@
 .footer__creator {
   display: flex;
   opacity: 0.8;
-  transition: .3s ease;
+  transition: 0.3s ease;
 
   &:hover {
     opacity: 1;
   }
 }
 
-.scroll-up {}
+.scroll-up {
+}
