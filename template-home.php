@@ -249,8 +249,8 @@ Template Name: Главная
             </div>
           </div>
 
-          <button type="button" data-schedule-carousel-prev class="schedule-carousel__nav-prev"></button>
-          <button type="button" data-schedule-carousel-next class="schedule-carousel__nav-next"></button>
+          <button type="button" data-schedule-carousel-prev class="carousel__nav-prev"></button>
+          <button type="button" data-schedule-carousel-next class="carousel__nav-next"></button>
         </div>
 
         <div class="home-schedule-section__more">
@@ -270,38 +270,62 @@ Template Name: Главная
           </div>
         </div>
 
-        <div class="home-preaching-section__items">
-          <div class="home-preaching-section__item">
-            <a href="#video-0" target="_blank" data-fslightbox="gallery" class="home-preaching-section__item-link">
-              <img width="480" height="320" src="https://xn----8sbbbsrepehoee0qnah.xn--p1ai/wp-content/uploads/2024/12/01-gotovaya-banya-pod-klyuch-skandinaviya-7-2_3-480x320.jpg" alt="" decoding="async" loading="lazy" class="home-preaching-section__item-image">
-              <span class="home-preaching-section__item-play"></span>
-            </a>
-            <div class="hidden">
-              <iframe src="https://rutube.ru/play/embed/af32a23a57e09654b12ad4407000f8c7/" id="video-0" width="1920px" height="1080px" frameborder="0" allow="fullscreen" allowfullscreen=""></iframe>
+        <div class="home-preaching-carousel">
+            <div class="home-preaching-carousel__view" data-home-preaching-carousel>
+                <div class="home-preaching-carousel__container">
+                    <div class="home-preaching-carousel__slide">
+                        <div class="home-preaching-section__item">
+                            <a href="#video-0" target="_blank" data-fslightbox="gallery" class="home-preaching-section__item-link">
+                            <img width="480" height="320" src="https://xn----8sbbbsrepehoee0qnah.xn--p1ai/wp-content/uploads/2024/12/01-gotovaya-banya-pod-klyuch-skandinaviya-7-2_3-480x320.jpg" alt="" decoding="async" loading="lazy" class="home-preaching-section__item-image">
+                            <span class="home-preaching-section__item-play"></span>
+                            </a>
+                            <div class="hidden">
+                            <iframe src="https://rutube.ru/play/embed/af32a23a57e09654b12ad4407000f8c7/" id="video-0" width="1920px" height="1080px" frameborder="0" allow="fullscreen" allowfullscreen=""></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home-preaching-carousel__slide">
+                        <div class="home-preaching-section__item">
+                            <a href="#video-0" target="_blank" data-fslightbox="gallery" class="home-preaching-section__item-link">
+                            <img width="480" height="320" src="https://xn----8sbbbsrepehoee0qnah.xn--p1ai/wp-content/uploads/2024/12/01-gotovaya-banya-pod-klyuch-skandinaviya-7-2_3-480x320.jpg" alt="" decoding="async" loading="lazy" class="home-preaching-section__item-image">
+                            <span class="home-preaching-section__item-play"></span>
+                            </a>
+                            <div class="hidden">
+                            <iframe src="https://rutube.ru/play/embed/af32a23a57e09654b12ad4407000f8c7/" id="video-0" width="1920px" height="1080px" frameborder="0" allow="fullscreen" allowfullscreen=""></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home-preaching-carousel__slide">
+                        <div class="home-preaching-section__item">
+                            <a href="#video-0" target="_blank" data-fslightbox="gallery" class="home-preaching-section__item-link">
+                            <img width="480" height="320" src="https://xn----8sbbbsrepehoee0qnah.xn--p1ai/wp-content/uploads/2024/12/01-gotovaya-banya-pod-klyuch-skandinaviya-7-2_3-480x320.jpg" alt="" decoding="async" loading="lazy" class="home-preaching-section__item-image">
+                            <span class="home-preaching-section__item-play"></span>
+                            </a>
+                            <div class="hidden">
+                            <iframe src="https://rutube.ru/play/embed/af32a23a57e09654b12ad4407000f8c7/" id="video-0" width="1920px" height="1080px" frameborder="0" allow="fullscreen" allowfullscreen=""></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home-preaching-carousel__slide">
+                        <div class="home-preaching-section__item">
+                            <a href="#video-0" target="_blank" data-fslightbox="gallery" class="home-preaching-section__item-link">
+                            <img width="480" height="320" src="https://xn----8sbbbsrepehoee0qnah.xn--p1ai/wp-content/uploads/2024/12/01-gotovaya-banya-pod-klyuch-skandinaviya-7-2_3-480x320.jpg" alt="" decoding="async" loading="lazy" class="home-preaching-section__item-image">
+                            <span class="home-preaching-section__item-play"></span>
+                            </a>
+                            <div class="hidden">
+                            <iframe src="https://rutube.ru/play/embed/af32a23a57e09654b12ad4407000f8c7/" id="video-0" width="1920px" height="1080px" frameborder="0" allow="fullscreen" allowfullscreen=""></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="home-preaching-section__item">
-            <a href="#video-0" target="_blank" data-fslightbox="gallery" class="home-preaching-section__item-link">
-              <img width="480" height="320" src="https://xn----8sbbbsrepehoee0qnah.xn--p1ai/wp-content/uploads/2024/12/01-gotovaya-banya-pod-klyuch-skandinaviya-7-2_3-480x320.jpg" alt="" decoding="async" loading="lazy" class="home-preaching-section__item-image">
-              <span class="home-preaching-section__item-play"></span>
-            </a>
-            <div class="hidden">
-              <iframe src="https://rutube.ru/play/embed/af32a23a57e09654b12ad4407000f8c7/" id="video-0" width="1920px" height="1080px" frameborder="0" allow="fullscreen" allowfullscreen=""></iframe>
-            </div>
-          </div>
-          <div class="home-preaching-section__item">
-            <a href="#video-0" target="_blank" data-fslightbox="gallery" class="home-preaching-section__item-link">
-              <img width="480" height="320" src="https://xn----8sbbbsrepehoee0qnah.xn--p1ai/wp-content/uploads/2024/12/01-gotovaya-banya-pod-klyuch-skandinaviya-7-2_3-480x320.jpg" alt="" decoding="async" loading="lazy" class="home-preaching-section__item-image">
-              <span class="home-preaching-section__item-play"></span>
-            </a>
-            <div class="hidden">
-              <iframe src="https://rutube.ru/play/embed/af32a23a57e09654b12ad4407000f8c7/" id="video-0" width="1920px" height="1080px" frameborder="0" allow="fullscreen" allowfullscreen=""></iframe>
-            </div>
-          </div>
+
+            <button type="button" data-home-preaching-carousel-prev class="carousel__nav-prev"></button>
+            <button type="button" data-home-preaching-carousel-next class="carousel__nav-next"></button>
         </div>
 
         <div class="home-preaching-section__more">
-          <a href="" class="ui-more">Подробнее</a>
+          <a href="" class="ui-more">Подробнее<span class="ui-more__arrow"></span></a>
         </div>
       </div>
     </div>
@@ -310,7 +334,7 @@ Template Name: Главная
       <div class="container">
         <div class="home-music">
           <div class="home-music__title">strannik-music</div>
-          <div class="home-music__desc">Духовные канты отца Геннадия — о трудном пути человека к покаянию,<br> о заблудшем и пробуждающемся к познанию Бога сердце, о земных и небесных странствиях души к Богу</div>
+          <div class="home-music__desc">Духовные канты отца Геннадия — о трудном пути человека&nbsp;к&nbsp;покаянию,<br> о&nbsp;заблудшем и&nbsp;пробуждающемся к&nbsp;познанию Бога сердце, о&nbsp;земных и&nbsp;небесных странствиях души&nbsp;к&nbsp;Богу</div>
           <div class="home-music__more">
             <a href="" class="ui-more">Подробнее<span class="ui-more__arrow"></span></a>
           </div>

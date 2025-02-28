@@ -17,6 +17,7 @@
 
   @include max-lg {
     flex-wrap: wrap;
+    gap: 48px;
   }
 }
 
@@ -37,7 +38,6 @@
     width: 100%;
     max-width: unset;
     order: -1;
-    margin-bottom: 48px;
   }
 }
 
@@ -68,6 +68,10 @@
   }
   @include max-lg {
     margin-top: 30px;
+  }
+  @include max-md {
+    margin-top: 0;
+    margin-bottom: 32px;
   }
 }
 
@@ -281,18 +285,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include max-md {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 }
 
 .footer__copyright {
   font-size: 12px;
   color: rgb(116, 116, 116);
   line-height: 1.2;
+
+  @include max-md {
+    width: 100%;
+  }
 }
 
 .footer__middle {
   display: flex;
   align-items: center;
   gap: 36px;
+
+  @include max-md {
+    gap: 16px;
+  }
 }
 
 .footer__counters {
@@ -307,6 +324,7 @@
   border-style: solid;
   border-width: 1px;
   border-color: rgb(204, 204, 204);
+  white-space: nowrap;
 
   &:hover {
     background: #d1ad8d;
@@ -319,6 +337,7 @@
   display: flex;
   opacity: 0.8;
   transition: 0.3s ease;
+  flex-shrink: 0;
 
   &:hover {
     opacity: 1;

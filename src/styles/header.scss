@@ -6,7 +6,7 @@
   z-index: 200;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 84px;
   transition: 0.3s ease;
 
@@ -14,10 +14,17 @@
     height: 54px;
     background-color: rgba(255, 252, 248, 0.902);
     box-shadow: -0.782px 4.938px 6px 0px rgba(69, 62, 57, 0.16);
+
+    @include max-md {
+      height: 48px;
+    }
   }
 
   @include max-xl {
     height: 54px;
+  }
+  @include max-md {
+    height: 48px;
   }
 }
 
@@ -34,6 +41,10 @@
   justify-content: space-between;
   gap: 20px;
   height: 100%;
+
+  @include max-md {
+    gap: 0;
+  }
 }
 
 .header__logo {
@@ -51,6 +62,10 @@
   }
   @include max-xl {
     margin-right: unset;
+  }
+  @include max-md {
+    width: calc(324px * 0.65);
+    height: calc(53px * 0.65);
   }
 }
 
@@ -199,14 +214,22 @@
   .header__toggle {
     display: flex;
     align-items: center;
-    gap: 8px;
     margin-right: auto;
-    margin-left: 12px;
+
+    @include max-md {
+      order: -1;
+      margin-left: -12px;
+      margin-right: unset;
+    }
   }
 
   .header__toggle-icon {
-    display: flex;
     color: #b7866d;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .header__toggle-label {
@@ -218,6 +241,10 @@
     background: linear-gradient(90deg, #b7866d, #7f5a44);
     background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    @include max-md {
+      display: none;
+    }
   }
 
   .header__overlay {
@@ -488,15 +515,33 @@
 .header__phone {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  @include max-md {
+    width: 48px;
+    height: 48px;
+    margin-right: -12px;
+  }
 }
 
 .header__phone-icon {
   color: #b3826a;
   font-size: 20px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 
   @include max-2xl {
     font-size: 18px;
+  }
+  @include max-md {
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #b7866d, #7f5a44);
   }
 }
 
@@ -515,5 +560,8 @@
 
   @include max-2xl {
     font-size: 16px;
+  }
+  @include max-md {
+    display: none;
   }
 }

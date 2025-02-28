@@ -11,6 +11,7 @@ import { initOrderButton } from './src/scripts/order-button'
 import fslightbox from 'fslightbox'
 import { initMobileMenu } from './src/scripts/mobile-menu'
 import { initSnow } from './src/scripts/snow'
+import { initHomePreachingCarouselCarousel } from './src/scripts/home-preaching-carousel'
 
 initStickyHeader()
 initScheduleCarousel()
@@ -20,3 +21,4 @@ initCallButton()
 initOrderButton()
 initMobileMenu()
 initSnow()
+initHomePreachingCarouselCarousel()
