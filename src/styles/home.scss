@@ -489,6 +489,7 @@
   content: '';
   display: block;
   background: url('../images/divider.png') no-repeat 50% 50%;
+  background-size: cover;
   width: 266px;
   height: 31px;
   margin: 20px auto 0;
@@ -539,83 +540,6 @@
   }
   @include max-md {
     --carousel-columns: 1;
-  }
-}
-
-.carousel__nav-prev,
-.carousel__nav-next {
-  background: rgb(240, 240, 240);
-  top: 50%;
-  margin-top: -22px;
-  position: absolute;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  color: #777;
-  justify-content: center;
-  opacity: 0.8;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
-
-  &:hover {
-    opacity: 1;
-  }
-
-  &[disabled] {
-    display: none;
-  }
-
-  @include max-lg {
-    margin-top: -18px;
-    width: 36px;
-    height: 36px;
-  }
-}
-
-.carousel__nav-prev {
-  left: -22px;
-
-  @include max-lg {
-    left: -18px;
-  }
-}
-
-.carousel__nav-prev::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  display: block;
-  border-left: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(45deg);
-
-  @include max-lg {
-    width: 8px;
-    height: 8px;
-  }
-}
-
-.carousel__nav-next {
-  right: -22px;
-
-  @include max-lg {
-    right: -18px;
-  }
-}
-
-.carousel__nav-next::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  display: block;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(-45deg);
-
-  @include max-lg {
-    width: 8px;
-    height: 8px;
   }
 }
 
@@ -944,6 +868,7 @@
   content: '';
   display: block;
   background: url('../images/divider.png') no-repeat 50% 50%;
+  background-size: cover;
   width: 266px;
   height: 31px;
   margin: 20px auto 0;
@@ -1303,6 +1228,7 @@
   content: '';
   display: block;
   background: url('../images/divider.png') no-repeat 50% 50%;
+  background-size: cover;
   width: 266px;
   height: 31px;
   margin: 24px auto 0;

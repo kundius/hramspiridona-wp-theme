@@ -1,0 +1,138 @@
+@use 'variables' as *;
+
+.rites {
+}
+
+.rites__title {
+  font-size: 36px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #1e2839;
+  font-family: 'PT Astra Serif';
+  text-align: center;
+  padding-bottom: 50px;
+  position: relative;
+  margin-bottom: 60px;
+
+  @include max-lg {
+    font-size: 32px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+  }
+  @include max-md {
+    font-size: 24px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+  }
+}
+
+.rites__title::after {
+  content: '';
+  display: block;
+  background: url('../images/divider2.png') no-repeat 50% 50%;
+  background-size: 100% 100%;
+  width: 186px;
+  height: 31px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+
+  @include max-lg {
+    width: calc(186px * 0.8);
+    height: calc(31px * 0.8);
+  }
+  @include max-md {
+    width: calc(186px * 0.6);
+    height: calc(31px * 0.6);
+  }
+}
+
+.rites__items {
+  columns: 4;
+  column-gap: 24px;
+  margin: 0 auto;
+  max-width: calc(280px * 4 + 20px * 3);
+}
+
+.rites__item {
+  max-width: 280px;
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.rites__item-text {
+  font-size: 22px;
+  color: rgb(95, 95, 95);
+  line-height: 24px;
+  position: relative;
+  padding-left: 40px;
+  display: inline-block;
+}
+
+.rites__item-text::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: url('../images/list-pattern.png') no-repeat 50% 50%;
+}
+
+.shrine-carousel {
+  --carousel-columns: 3;
+
+  position: relative;
+
+  @include max-md {
+    --carousel-columns: 1;
+  }
+}
+
+.shrine-carousel__view {
+  overflow: hidden;
+  margin: -10px;
+
+  @include max-2xl {
+    margin: calc(-10px * 0.8);
+  }
+  @include max-xl {
+    margin: calc(-10px * 0.7);
+  }
+  @include max-lg {
+    margin: calc(-10px * 0.6);
+  }
+  @include max-md {
+    margin: -5px;
+  }
+}
+
+.shrine-carousel__container {
+  display: flex;
+}
+
+.shrine-carousel__slide {
+  flex: 0 0 calc(100% / var(--carousel-columns));
+  min-width: 0;
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px;
+
+  @include max-2xl {
+    padding: calc(10px * 0.8);
+  }
+  @include max-xl {
+    padding: calc(10px * 0.7);
+  }
+  @include max-lg {
+    padding: calc(10px * 0.6);
+  }
+  @include max-md {
+    padding: 5px;
+  }
+}

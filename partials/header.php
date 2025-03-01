@@ -33,3 +33,7 @@
     </a>
   </div>
 </div>
+
+<?php if (isset($args['placeholder']) && $args['placeholder']): ?>
+<div class="header-placeholder"></div>
+<?php endif; ?>
