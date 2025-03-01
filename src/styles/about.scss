@@ -1,18 +1,29 @@
 @use 'variables' as *;
 
-.rites {
+.about-rites {
+  margin-top: 96px;
+  margin-bottom: 96px;
+
+  @include max-lg {
+    margin-top: 64px;
+    margin-bottom: 64px;
+  }
+  @include max-md {
+    margin-top: 48px;
+    margin-bottom: 48px;
+  }
 }
 
-.rites__title {
+.about-rites__title {
   font-size: 36px;
   line-height: 1;
   text-transform: uppercase;
   color: #1e2839;
   font-family: 'PT Astra Serif';
   text-align: center;
-  padding-bottom: 50px;
+  padding-bottom: 56px;
   position: relative;
-  margin-bottom: 60px;
+  margin-bottom: 68px;
 
   @include max-lg {
     font-size: 32px;
@@ -20,13 +31,13 @@
     padding-bottom: 40px;
   }
   @include max-md {
-    font-size: 24px;
-    margin-bottom: 32px;
+    font-size: 20px;
+    margin-bottom: 24px;
     padding-bottom: 24px;
   }
 }
 
-.rites__title::after {
+.about-rites__title::after {
   content: '';
   display: block;
   background: url('../images/divider2.png') no-repeat 50% 50%;
@@ -48,32 +59,53 @@
   }
 }
 
-.rites__items {
+.about-rites__items {
   columns: 4;
   column-gap: 24px;
   margin: 0 auto;
   max-width: calc(280px * 4 + 20px * 3);
+
+  @include max-xl {
+    columns: 3;
+  }
+  @include max-lg {
+    columns: 2;
+  }
+  @include max-md {
+    columns: 1;
+    max-width: 280px;
+  }
 }
 
-.rites__item {
+.about-rites__item {
   max-width: 280px;
   margin-bottom: 20px;
 
   &:last-child {
     margin-bottom: 0;
   }
+
+  @include max-md {
+    margin-bottom: 12px;
+  }
 }
 
-.rites__item-text {
+.about-rites__item-text {
   font-size: 22px;
   color: rgb(95, 95, 95);
   line-height: 24px;
   position: relative;
   padding-left: 40px;
   display: inline-block;
+
+  @include max-md {
+    font-size: 18px;
+    line-height: 20px;
+    padding-left: 32px;
+  }
 }
 
-.rites__item-text::before {
+.about-rites__item-text::before {
   content: '';
   position: absolute;
   left: 0;
@@ -82,34 +114,41 @@
   width: 24px;
   height: 24px;
   background: url('../images/list-pattern.png') no-repeat 50% 50%;
+  background-size: cover;
+
+  @include max-md {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .shrine-carousel {
   --carousel-columns: 3;
+  --carousel-gap: 56px;
 
+  margin-left: 56px;
+  margin-right: 56px;
   position: relative;
 
+  @include max-xl {
+    --carousel-gap: 48px;
+    margin-left: 48px;
+    margin-right: 48px;
+  }
+  @include max-lg {
+    --carousel-columns: 2;
+  }
   @include max-md {
     --carousel-columns: 1;
+    --carousel-gap: 36px;
+    margin-left: 36px;
+    margin-right: 36px;
   }
 }
 
 .shrine-carousel__view {
   overflow: hidden;
-  margin: -10px;
-
-  @include max-2xl {
-    margin: calc(-10px * 0.8);
-  }
-  @include max-xl {
-    margin: calc(-10px * 0.7);
-  }
-  @include max-lg {
-    margin: calc(-10px * 0.6);
-  }
-  @include max-md {
-    margin: -5px;
-  }
+  margin: calc(var(--carousel-gap) / 2 * -1);
 }
 
 .shrine-carousel__container {
@@ -121,18 +160,129 @@
   min-width: 0;
   position: relative;
   box-sizing: border-box;
-  padding: 10px;
+  padding: calc(var(--carousel-gap) / 2);
+}
 
-  @include max-2xl {
-    padding: calc(10px * 0.8);
+.shrine-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.shrine-card__image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+  img {
+    max-width: 100%;
+    height: auto;
   }
+}
+
+.shrine-card__title {
+  font-size: 24px;
+  color: rgb(30, 40, 57);
+  text-transform: uppercase;
+  line-height: 1.25;
+  text-align: center;
+  font-family: 'PT Astra Serif';
+  margin-bottom: 28px;
+
   @include max-xl {
-    padding: calc(10px * 0.7);
-  }
-  @include max-lg {
-    padding: calc(10px * 0.6);
+    font-size: 20px;
+    margin-bottom: 20px;
   }
   @include max-md {
-    padding: 5px;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+}
+
+.shrine-card__details {
+  font-size: 20px;
+  font-family: 'PT Astra Serif';
+  color: rgb(200, 166, 146);
+  font-style: italic;
+  line-height: 1.25;
+  text-align: center;
+  border-bottom: 1px solid currentColor;
+  display: block;
+  &:hover {
+    color: #f4987f;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  @include max-xl {
+    font-size: 18px;
+  }
+  @include max-md {
+    font-size: 16px;
+  }
+}
+
+.about-shrines {
+  margin-top: 126px;
+  margin-bottom: 126px;
+
+  @include max-lg {
+    margin-top: 96px;
+    margin-bottom: 96px;
+  }
+  @include max-md {
+    margin-top: 64px;
+    margin-bottom: 64px;
+  }
+}
+
+.about-shrines__title {
+  font-size: 36px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #1e2839;
+  font-family: 'PT Astra Serif';
+  text-align: center;
+  padding-bottom: 56px;
+  position: relative;
+  margin-bottom: 40px;
+
+  @include max-lg {
+    font-size: 32px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+  }
+  @include max-md {
+    font-size: 20px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+.about-shrines__title::after {
+  content: '';
+  display: block;
+  background: url('../images/divider2.png') no-repeat 50% 50%;
+  background-size: 100% 100%;
+  width: 186px;
+  height: 31px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+
+  @include max-lg {
+    width: calc(186px * 0.8);
+    height: calc(31px * 0.8);
+  }
+  @include max-md {
+    width: calc(186px * 0.6);
+    height: calc(31px * 0.6);
   }
 }

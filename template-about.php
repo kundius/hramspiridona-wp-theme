@@ -38,37 +38,40 @@ $shrines = new WP_Query([
             <div class="page-section__content content"><?php the_content(); ?></div>
 
             <?php if ($shrines->have_posts()): ?>
-            <div class="shrine-carousel">
-                <div class="shrine-carousel__view" data-shrine-carousel>
-                    <div class="shrine-carousel__container">
-                        <?php while ($shrines->have_posts()): ?>
-                        <?php $shrines->the_post(); ?>
-                        <div class="shrine-carousel__slide">
-                            <article class="shrine-card">
-                                <figure class="shrine-card__image">
-                                    <?php the_post_thumbnail('original'); ?>
-                                </figure>
-                                <div class="shrine-card__title"><?php the_title(); ?></div>
-                                <a href="<?php the_permalink(); ?>" class="shrine-card__details">Подробнее</a>
-                            </article>
+            <div class="about-shrines">
+                <div class="about-shrines__title">Главные святыни храма</div>
+                <div class="shrine-carousel">
+                    <div class="shrine-carousel__view" data-shrine-carousel>
+                        <div class="shrine-carousel__container">
+                            <?php while ($shrines->have_posts()): ?>
+                            <?php $shrines->the_post(); ?>
+                            <div class="shrine-carousel__slide">
+                                <article class="shrine-card">
+                                    <figure class="shrine-card__image">
+                                        <?php the_post_thumbnail('original'); ?>
+                                    </figure>
+                                    <div class="shrine-card__title"><?php the_title(); ?></div>
+                                    <a href="<?php the_permalink(); ?>" class="shrine-card__details">Подробнее</a>
+                                </article>
+                            </div>
+                            <?php endwhile; ?>
+                            <?php wp_reset_postdata(); ?>
                         </div>
-                        <?php endwhile; ?>
-                        <?php wp_reset_postdata(); ?>
                     </div>
-                </div>
 
-                <button type="button" data-shrine-carousel-prev class="carousel__nav-prev"></button>
-                <button type="button" data-shrine-carousel-next class="carousel__nav-next"></button>
+                    <button type="button" data-shrine-carousel-prev class="carousel__nav-prev"></button>
+                    <button type="button" data-shrine-carousel-next class="carousel__nav-next"></button>
+                </div>
             </div>
             <?php endif; ?>
 
             <?php if ($crb_rites = carbon_get_the_post_meta('crb_rites')): ?>
-            <div class="rites">
-                <div class="rites__title">Требы</div>
-                <div class="rites__items">
+            <div class="about-rites">
+                <div class="about-rites__title">Требы</div>
+                <div class="about-rites__items">
                     <?php foreach ($crb_rites as $key => $crb_rite): ?>
-                    <div class="rites__item">
-                        <div class="rites__item-text">
+                    <div class="about-rites__item">
+                        <div class="about-rites__item-text">
                             <?php echo $crb_rite['name']; ?>
                         </div>
                     </div>

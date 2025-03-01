@@ -95,9 +95,9 @@ body {
 }
 
 .content {
-  font-size: 16px;
-  line-height: 1.25;
-  color: #000000;
+  font-size: 20px;
+  color: rgb(64, 64, 64);
+  line-height: 1.4;
 
   p {
     margin: 0;
@@ -108,25 +108,27 @@ body {
   }
 
   h2 {
-    font-size: 30px;
-    color: #605447;
-    font-weight: 700;
-    margin: 0;
+    font-size: 28px;
+    color: rgb(98, 111, 124);
+    text-transform: uppercase;
+    line-height: 1;
   }
 
   * + h2 {
-    margin-top: 40px;
+    margin-top: 64px;
   }
 
   h3 {
-    font-size: 24px;
-    color: #605447;
-    font-weight: 700;
-    margin: 0;
+    font-size: 22px;
+    font-family: 'PT Astra Serif';
+    color: rgb(165, 165, 165);
+    text-transform: uppercase;
+    line-height: 1;
+    font-weight: 400;
   }
 
   * + h3 {
-    margin-top: 32px;
+    margin-top: 48px;
   }
 
   table {
@@ -162,14 +164,6 @@ body {
     margin-top: 24px;
   }
 
-  h2 + table {
-    margin-top: 40px;
-  }
-
-  h3 + table {
-    margin-top: 32px;
-  }
-
   a {
     text-decoration: underline;
   }
@@ -188,79 +182,41 @@ body {
     margin-top: 24px;
   }
 
-  @include max-lg {
-    font-size: 14px;
+  .wp-block-image {
+    display: flex;
+  }
 
-    * + p {
-      margin-top: 20px;
-    }
-
-    h2 {
-      font-size: 24px;
-    }
-
-    * + h2 {
-      margin-top: 32px;
-    }
-
-    h3 {
-      font-size: 20px;
-    }
-
-    * + h3 {
-      margin-top: 24px;
-    }
-
-    table {
-      th {
-        font-size: 16px;
-        padding: 16px 16px;
-      }
-
-      td {
-        padding: 16px 16px;
-      }
-    }
-
-    * + table {
-      margin-top: 20px;
-    }
-
-    h2 + table {
-      margin-top: 32px;
-    }
-
-    h3 + table {
-      margin-top: 24px;
-    }
-
-    ul li + li {
-      margin-top: 12px;
-    }
-
-    * + ul {
-      margin-top: 20px;
-    }
+  .wp-block-image.size-full {
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 64px 0;
   }
 
   @include max-md {
-    max-width: calc(100% + 24px);
-    overflow: auto;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-left: -12px;
-    margin-right: -12px;
-
-    table {
-      th {
-        font-size: 14px;
-        padding: 12px;
-      }
-
-      td {
-        font-size: 12px;
-        padding: 12px;
-      }
+    font-size: 16px;
+    h2 {
+      font-size: 20px;
+    }
+    * + h2 {
+      margin-top: 36px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+    * + h3 {
+      margin-top: 24px;
+    }
+    .wp-block-image.size-full {
+      margin: 36px 0;
+    }
+    * + p {
+      margin-top: 20px;
+    }
+    * + ul {
+      margin-top: 20px;
+    }
+    * + table {
+      margin-top: 20px;
     }
   }
 }
@@ -495,40 +451,48 @@ body {
 
 .carousel__nav-prev,
 .carousel__nav-next {
-  background: rgb(240, 240, 240);
   top: 50%;
-  margin-top: -22px;
+  margin-top: -28px;
   position: absolute;
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  color: #777;
-  justify-content: center;
-  opacity: 0.8;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  background: rgba(221, 203, 187, 0.51);
 
   &:hover {
-    opacity: 1;
+    background: linear-gradient(90deg, rgb(201, 168, 133) 0%, rgb(156, 124, 97) 100%);
   }
 
   &[disabled] {
     display: none;
   }
 
-  @include max-lg {
-    margin-top: -18px;
-    width: 36px;
-    height: 36px;
+  @include max-md {
+    margin-top: -22px;
+    width: 44px;
+    height: 44px;
   }
 }
 
-.carousel__nav-prev {
-  left: -22px;
+.carousel__nav-prev::after,
+.carousel__nav-next::after {
+  content: '';
+  width: 28px;
+  height: 2px;
+  margin-left: -14px;
+  margin-top: -1px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: currentColor;
+}
 
-  @include max-lg {
-    left: -18px;
+.carousel__nav-prev {
+  left: -60px;
+
+  @include max-md {
+    left: -46px;
   }
 }
 
@@ -540,18 +504,18 @@ body {
   border-left: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: rotate(45deg);
-
-  @include max-lg {
-    width: 8px;
-    height: 8px;
-  }
+  position: absolute;
+  left: calc(50% - 9px);
+  top: 50%;
+  margin-left: -5px;
+  margin-top: -5px;
 }
 
 .carousel__nav-next {
-  right: -22px;
+  right: -60px;
 
-  @include max-lg {
-    right: -18px;
+  @include max-md {
+    right: -46px;
   }
 }
 
@@ -563,9 +527,10 @@ body {
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: rotate(-45deg);
-
-  @include max-lg {
-    width: 8px;
-    height: 8px;
-  }
+  transform-origin: 50% 50%;
+  position: absolute;
+  left: calc(50% + 9px);
+  top: 50%;
+  margin-left: -5px;
+  margin-top: -5px;
 }
