@@ -20,7 +20,9 @@ Template Name: Контакты
         <div class="container page-section__container">
             <div class="page-section__breadcrumbs">
                 <div class="breadcrumbs">
-                    <a href="<?php echo home_url(); ?>" class="breadcrumbs__link">Главная</a>
+                    <a href="<?php echo get_the_permalink(2); ?>" class="breadcrumbs__link">
+                        <?php echo get_the_title(2); ?>
+                    </a>
                     <span class="breadcrumbs__separator"></span>
                     <span class="breadcrumbs__current"><?php the_title(); ?></span>
                 </div>

@@ -286,3 +286,43 @@
     height: calc(31px * 0.6);
   }
 }
+
+.about-details {
+  margin-bottom: 56px;
+
+  @include max-lg {
+    margin-bottom: 48px;
+  }
+  @include max-md {
+    margin-bottom: 32px;
+  }
+}
+
+.about-details__title {
+  font-size: 28px;
+  color: rgb(98, 111, 124);
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 56px;
+
+  @include max-lg {
+    margin-bottom: 48px;
+  }
+  @include max-md {
+    margin-bottom: 24px;
+    font-size: 20px;
+  }
+}
+
+.about-details__image {
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}

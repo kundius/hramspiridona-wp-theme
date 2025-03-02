@@ -48,10 +48,22 @@ function register_carbon_fields()
       Field::make('textarea', 'crb_seo_description', 'Описание'),
     ]);
 
+  Container::make('post_meta', 'Подробности')
+    ->where('post_type', '=', 'minister')
+    ->add_fields([
+      Field::make('text', 'crb_rank', 'Сан'),
+      Field::make('text', 'crb_description', 'Краткое описание'),
+      Field::make('complex', 'crb_awards', 'Награды')->add_fields([
+        Field::make('text', 'name', ''),
+      ]),
+    ]);
+
   Container::make('post_meta', 'О Храме')
     ->where('post_type', '=', 'page')
     ->where('post_template', '=', 'template-about.php')
     ->add_fields([
+      Field::make('text', 'crb_temple_name', 'Название Храма'),
+      Field::make('image', 'crb_temple_photo', 'Фото Храма'),
       Field::make('complex', 'crb_rites', 'Требы')->add_fields([
         Field::make('text', 'name', 'Название'),
       ]),

@@ -7,6 +7,7 @@
 @use 'home';
 @use 'contacts';
 @use 'about';
+@use 'clergy';
 
 :root {
   --header-height: 68px;
@@ -109,6 +110,7 @@ body {
 
   h2 {
     font-size: 28px;
+    font-family: 'PT Astra Serif';
     color: rgb(98, 111, 124);
     text-transform: uppercase;
     line-height: 1;
@@ -129,6 +131,18 @@ body {
 
   * + h3 {
     margin-top: 48px;
+  }
+
+  blockquote {
+    margin: 0;
+    padding: 56px;
+    border-radius: 30px;
+    background-color: rgb(236, 242, 251);
+    border: none;
+  }
+
+  * + blockquote {
+    margin-top: 32px;
   }
 
   table {
@@ -170,12 +184,24 @@ body {
 
   ul {
     margin: 0;
-    padding: 0 0 0 1.25em;
-    list-style: disc;
+    padding: 0;
+    list-style: none;
   }
 
-  ul li + li {
-    margin-top: 12px;
+  ul li {
+    padding-left: 32px;
+    position: relative;
+  }
+
+  ul li::before {
+    content: '';
+    background: url('../images/arrow.png') no-repeat 50% 50%;
+    background-size: cover;
+    width: 18px;
+    height: 5px;
+    position: absolute;
+    left: 0;
+    top: 12px;
   }
 
   * + ul {
@@ -189,7 +215,7 @@ body {
   .wp-block-image.size-full {
     overflow: hidden;
     border-radius: 12px;
-    margin: 64px 0;
+    margin: 56px 0;
   }
 
   @include max-md {
@@ -205,6 +231,13 @@ body {
     }
     * + h3 {
       margin-top: 24px;
+    }
+    blockquote {
+      padding: 24px;
+      border-radius: 16px;
+    }
+    * + blockquote {
+      margin-top: 20px;
     }
     .wp-block-image.size-full {
       margin: 36px 0;
@@ -254,19 +287,27 @@ body {
   text-align: center;
   padding-bottom: 50px;
   position: relative;
-  margin-bottom: 90px;
 
   @include max-lg {
     font-size: 36px;
     line-height: 40px;
-    margin-bottom: 64px;
     padding-bottom: 40px;
   }
   @include max-md {
     font-size: 24px;
     line-height: 32px;
-    margin-bottom: 48px;
     padding-bottom: 24px;
+  }
+
+  &:not([class*='mb-']) {
+    margin-bottom: 90px;
+
+    @include max-lg {
+      margin-bottom: 64px;
+    }
+    @include max-md {
+      margin-bottom: 48px;
+    }
   }
 }
 

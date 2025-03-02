@@ -5,8 +5,7 @@ Template Name: О Храме
 $shrines = new WP_Query([
   'post_type' => 'shrine',
   'orderby' => [
-    'is_sticky' => 'DESC',
-    'date' => 'DESC',
+    'menu_order' => 'ASC',
   ],
   'posts_per_page' => -1,
 ]); ?>
@@ -27,13 +26,28 @@ $shrines = new WP_Query([
         <div class="container page-section__container">
             <div class="page-section__breadcrumbs">
                 <div class="breadcrumbs">
-                    <a href="<?php echo home_url(); ?>" class="breadcrumbs__link">Главная</a>
+                    <a href="<?php echo get_the_permalink(2); ?>" class="breadcrumbs__link">
+                        <?php echo get_the_title(2); ?>
+                    </a>
                     <span class="breadcrumbs__separator"></span>
                     <span class="breadcrumbs__current"><?php the_title(); ?></span>
                 </div>
             </div>
 
-            <h1 class="page-section__title"><?php the_title(); ?></h1>
+            <h1 class="page-section__title mb-8"><?php the_title(); ?></h1>
+
+            <div class="about-details">
+                <?php if ($crb_temple_name = carbon_get_the_post_meta('crb_temple_name')): ?>
+                <div class="about-details__title">
+                    <?php echo $crb_temple_name; ?>
+                </div>
+                <?php endif; ?>
+                <?php if ($crb_temple_photo = carbon_get_the_post_meta('crb_temple_photo')): ?>
+                <div class="about-details__image">
+                    <?php echo wp_get_attachment_image($crb_temple_photo, 'original'); ?>
+                </div>
+                <?php endif; ?>
+            </div>
 
             <div class="page-section__content content"><?php the_content(); ?></div>
 
