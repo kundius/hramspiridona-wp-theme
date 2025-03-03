@@ -75,7 +75,54 @@ function register_carbon_fields()
     ->add_fields([
       Field::make('complex', 'crb_commemoration_types', 'Типы помина')->add_fields([
         Field::make('text', 'name', 'Название'),
+        Field::make('text', 'short', 'Короткое название'),
       ]),
+    ]);
+
+  Container::make('post_meta', 'Расписание')
+    ->where('post_type', '=', 'page')
+    ->where('post_template', '=', 'template-schedule.php')
+    ->add_fields([
+      Field::make('complex', 'crb_schedule', '')
+        ->add_fields([
+          Field::make('text', 'name', 'Название недели'),
+          Field::make('complex', 'days', '')
+            ->add_fields([
+              Field::make('date', 'date', 'Дата'),
+              Field::make('textarea', 'desc', 'Описание')->set_rows(2),
+              Field::make('complex', 'parts', '')
+                ->add_fields([
+                  Field::make('text', 'name', 'Название'),
+                  Field::make('complex', 'items', 'Список богослужений')
+                    ->add_fields([
+                      Field::make('text', 'time', 'Время')->set_width(50),
+                      Field::make('text', 'name', 'Название')->set_width(50),
+                    ])
+                    ->setup_labels([
+                      'plural_name' => 'Богослужения',
+                      'singular_name' => 'Богослужение',
+                    ]),
+                ])
+                ->set_layout('tabbed-horizontal')
+                ->set_header_template('<%- name %>')
+                ->setup_labels([
+                  'plural_name' => 'Части суток',
+                  'singular_name' => 'Часть суток',
+                ]),
+            ])
+            ->set_layout('tabbed-horizontal')
+            ->set_header_template('<%- date %>')
+            ->setup_labels([
+              'plural_name' => 'Дни',
+              'singular_name' => 'День',
+            ]),
+        ])
+        ->set_layout('tabbed-vertical')
+        ->set_header_template('<%- name %>')
+        ->setup_labels([
+          'plural_name' => 'Недели',
+          'singular_name' => 'Неделя',
+        ]),
     ]);
 
   Container::make('post_meta', 'Видео')

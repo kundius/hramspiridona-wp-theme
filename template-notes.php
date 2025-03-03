@@ -30,7 +30,14 @@ $types = carbon_get_the_post_meta('crb_commemoration_types'); ?>
 
             <div class="page-content content mb-12 md:mb-16"><?php the_content(); ?></div>
 
-            <div class="notes-form">
+            <form action="<?php echo admin_url(
+              'admin-ajax.php'
+            ); ?>" method="post" class="notes-form" data-notes-form>
+                <input type="hidden" name="submitted" value="">
+                <input type="hidden" name="nonce" value="<?php echo wp_create_nonce(
+                  'notes-nonce'
+                ); ?>">
+
                 <div class="notes-form__container">
                     <div class="notes-form__title">
                         Подать записки онлайн
@@ -42,7 +49,7 @@ $types = carbon_get_the_post_meta('crb_commemoration_types'); ?>
                                     Укажите свои фамилию и имя
                                 </label>
                                 <div class="notes-form-field__control">
-                                    <input type="text" class="notes-form-field__input" placeholder="Представьтесь">
+                                    <input type="text" name="client" class="notes-form-field__input" placeholder="Представьтесь">
                                 </div>
                             </div>
                         </div>
@@ -53,9 +60,9 @@ $types = carbon_get_the_post_meta('crb_commemoration_types'); ?>
                                     Выберите тип помина
                                 </label>
                                 <div class="notes-form-field__control">
-                                    <select class="notes-form-field__select">
+                                    <select class="notes-form-field__select" name="type">
                                         <?php foreach ($types as $key => $type): ?>
-                                        <option value="<?php echo $type['name']; ?>">
+                                        <option value="<?php echo $type['short']; ?>">
                                             <?php echo $type['name']; ?>
                                         </option>
                                         <?php endforeach; ?>
@@ -78,19 +85,19 @@ $types = carbon_get_the_post_meta('crb_commemoration_types'); ?>
                                             </div>
                                             <div class="notes-form-list__items">
                                                 <div class="notes-form-list__item">
-                                                    <input type="text" class="notes-form-list__input" placeholder="Введите здесь имя поминаемого">
+                                                    <input type="text" name="names[]" class="notes-form-list__input" placeholder="Введите здесь имя поминаемого">
                                                 </div>
                                                 <div class="notes-form-list__item">
-                                                    <input type="text" class="notes-form-list__input" placeholder="Введите здесь имя поминаемого">
+                                                    <input type="text" name="names[]" class="notes-form-list__input" placeholder="Введите здесь имя поминаемого">
                                                 </div>
                                                 <div class="notes-form-list__item">
-                                                    <input type="text" class="notes-form-list__input" placeholder="Введите здесь имя поминаемого">
+                                                    <input type="text" name="names[]" class="notes-form-list__input" placeholder="Введите здесь имя поминаемого">
                                                 </div>
                                                 <div class="notes-form-list__item">
-                                                    <input type="text" class="notes-form-list__input" placeholder="Введите здесь имя поминаемого">
+                                                    <input type="text" name="names[]" class="notes-form-list__input" placeholder="Введите здесь имя поминаемого">
                                                 </div>
                                                 <div class="notes-form-list__item">
-                                                    <input type="text" class="notes-form-list__input" placeholder="Введите здесь имя поминаемого">
+                                                    <input type="text" name="names[]" class="notes-form-list__input" placeholder="Введите здесь имя поминаемого">
                                                 </div>
                                             </div>
                                         </div>
@@ -106,11 +113,12 @@ $types = carbon_get_the_post_meta('crb_commemoration_types'); ?>
                             </div>
                         </div>
                         <div class="notes-form__layout-submit">
+                            <div class="notes-form__messages" data-notes-form-messages></div>
                             <button type="submit" class="notes-form__submit">Подать записку</button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
