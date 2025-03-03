@@ -16,21 +16,20 @@ Template Name: Контакты
   <div class="flex flex-col min-h-screen">
     <?php get_template_part('partials/header', null, ['placeholder' => true]); ?>
 
-    <div class="page-section">
-        <div class="container page-section__container">
-            <div class="page-section__breadcrumbs">
-                <div class="breadcrumbs">
-                    <a href="<?php echo get_the_permalink(2); ?>" class="breadcrumbs__link">
-                        <?php echo get_the_title(2); ?>
-                    </a>
-                    <span class="breadcrumbs__separator"></span>
-                    <span class="breadcrumbs__current"><?php the_title(); ?></span>
-                </div>
+    <div class="pb-12 md:pb-16 lg:pb-24">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="<?php echo get_the_permalink(2); ?>" class="breadcrumbs__link">
+                    <?php echo get_the_title(2); ?>
+                </a>
+                <span class="breadcrumbs__separator"></span>
+                <span class="breadcrumbs__current"><?php the_title(); ?></span>
             </div>
 
-            <h1 class="page-section__title"><?php the_title(); ?></h1>
 
-            <div class="page-section__content content"><?php the_content(); ?></div>
+            <h1 class="page-title"><?php the_title(); ?></h1>
+
+            <div class="page-content content"><?php the_content(); ?></div>
 
             <div class="contacts">
                 <div class="contacts-data">

@@ -1,17 +1,6 @@
 @use 'variables' as *;
 
 .about-rites {
-  margin-top: 96px;
-  margin-bottom: 96px;
-
-  @include max-lg {
-    margin-top: 64px;
-    margin-bottom: 64px;
-  }
-  @include max-md {
-    margin-top: 48px;
-    margin-bottom: 48px;
-  }
 }
 
 .about-rites__title {
@@ -229,17 +218,6 @@
 }
 
 .about-shrines {
-  margin-top: 126px;
-  margin-bottom: 126px;
-
-  @include max-lg {
-    margin-top: 96px;
-    margin-bottom: 96px;
-  }
-  @include max-md {
-    margin-top: 64px;
-    margin-bottom: 64px;
-  }
 }
 
 .about-shrines__title {
@@ -288,14 +266,6 @@
 }
 
 .about-details {
-  margin-bottom: 56px;
-
-  @include max-lg {
-    margin-bottom: 48px;
-  }
-  @include max-md {
-    margin-bottom: 32px;
-  }
 }
 
 .about-details__title {

@@ -8,6 +8,8 @@
 @use 'contacts';
 @use 'about';
 @use 'clergy';
+@use 'preachings';
+@use 'notes';
 
 :root {
   --header-height: 68px;
@@ -38,9 +40,13 @@ body {
 
 body {
   .fslightbox-slide-btn {
-    background-color: #f5f5f5cc;
+    color: #fff;
+    background: #ddcbbb82;
     border-radius: 50%;
     padding: 17px;
+    &:hover {
+      background: linear-gradient(90deg, #c9a885, #9c7c61);
+    }
 
     @include max-md {
       padding: 8px;
@@ -48,7 +54,7 @@ body {
   }
 
   .fslightbox-svg-path {
-    fill: #b2b8c2;
+    fill: #fff;
   }
 }
 
@@ -255,30 +261,17 @@ body {
 }
 
 .page-section {
-  padding-top: 32px;
-  padding-bottom: 64px;
+  padding-bottom: 96px;
 
+  @include max-lg {
+    padding-bottom: 64px;
+  }
   @include max-md {
-    padding-top: 24px;
     padding-bottom: 48px;
   }
 }
 
-.page-section__container {
-}
-
-.page-section__breadcrumbs {
-  margin-bottom: 64px;
-
-  @include max-lg {
-    margin-bottom: 48px;
-  }
-  @include max-md {
-    margin-bottom: 32px;
-  }
-}
-
-.page-section__title {
+.page-title {
   font-size: 44px;
   line-height: 48px;
   text-transform: uppercase;
@@ -287,16 +280,19 @@ body {
   text-align: center;
   padding-bottom: 50px;
   position: relative;
+  margin-top: 64px;
 
   @include max-lg {
     font-size: 36px;
     line-height: 40px;
     padding-bottom: 40px;
+    margin-top: 48px;
   }
   @include max-md {
     font-size: 24px;
     line-height: 32px;
     padding-bottom: 24px;
+    margin-top: 32px;
   }
 
   &:not([class*='mb-']) {
@@ -311,7 +307,7 @@ body {
   }
 }
 
-.page-section__title::after {
+.page-title::after {
   content: '';
   display: block;
   background: url('../images/divider.png') no-repeat 50% 50%;
@@ -333,13 +329,15 @@ body {
   }
 }
 
-.page-section__content {
+.page-content {
   &:empty {
     display: none;
   }
 }
 
 .breadcrumbs {
+  margin-top: 32px;
+  margin-bottom: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -351,9 +349,13 @@ body {
 
   @include max-lg {
     font-size: 18px;
+    margin-top: 24px;
+    margin-bottom: 24px;
   }
   @include max-lg {
     font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
 }
 
@@ -374,6 +376,54 @@ body {
 
 .breadcrumbs__current {
   color: #b38d76;
+}
+
+.pagination {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  .prev::before {
+    content: '';
+    background: url('../images/arrow.png') no-repeat 50% 50%;
+    background-size: cover;
+    width: 18px;
+    height: 5px;
+    display: block;
+    transform: scaleX(-1);
+  }
+  .next::before {
+    content: '';
+    background: url('../images/arrow.png') no-repeat 50% 50%;
+    background-size: cover;
+    width: 18px;
+    height: 5px;
+    display: block;
+  }
+  .page-numbers {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-family: 'PT Astra Serif';
+    color: rgb(58, 58, 58);
+    font-style: italic;
+    line-height: 1;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    &:hover {
+      border-color: #ccc;
+    }
+  }
+  .current {
+    font-size: 24px;
+    color: #7f5a44;
+    font-weight: bold;
+    border-color: #d1ad8d;
+  }
 }
 
 .ui-more {

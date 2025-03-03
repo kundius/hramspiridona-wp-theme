@@ -22,23 +22,21 @@ $ministers = new WP_Query([
   <div class="flex flex-col min-h-screen">
     <?php get_template_part('partials/header', null, ['placeholder' => true]); ?>
 
-    <div class="page-section">
-        <div class="container page-section__container">
-            <div class="page-section__breadcrumbs">
-                <div class="breadcrumbs">
-                    <a href="<?php echo get_the_permalink(2); ?>" class="breadcrumbs__link">
-                        <?php echo get_the_title(2); ?>
-                    </a>
-                    <span class="breadcrumbs__separator"></span>
-                    <a href="<?php echo get_the_permalink(49); ?>" class="breadcrumbs__link">
-                        <?php echo get_the_title(49); ?>
-                    </a>
-                    <span class="breadcrumbs__separator"></span>
-                    <span class="breadcrumbs__current"><?php the_title(); ?></span>
-                </div>
+    <div class="pb-12 md:pb-16 lg:pb-24">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="<?php echo get_the_permalink(2); ?>" class="breadcrumbs__link">
+                    <?php echo get_the_title(2); ?>
+                </a>
+                <span class="breadcrumbs__separator"></span>
+                <a href="<?php echo get_the_permalink(49); ?>" class="breadcrumbs__link">
+                    <?php echo get_the_title(49); ?>
+                </a>
+                <span class="breadcrumbs__separator"></span>
+                <span class="breadcrumbs__current"><?php the_title(); ?></span>
             </div>
 
-            <h1 class="page-section__title mb-8"><?php the_title(); ?></h1>
+            <h1 class="page-title mb-8"><?php the_title(); ?></h1>
 
             <?php if ($ministers->have_posts()): ?>
             <div class="clergy-ministers">
@@ -66,7 +64,7 @@ $ministers = new WP_Query([
             </div>
             <?php endif; ?>
 
-            <div class="page-section__content content lg:mb-32"><?php the_content(); ?></div>
+            <div class="page-content content mt-12 md:mt-16 lg:mt-24"><?php the_content(); ?></div>
         </div>
     </div>
 

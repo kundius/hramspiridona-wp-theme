@@ -22,19 +22,17 @@ $shrines = new WP_Query([
   <div class="flex flex-col min-h-screen">
     <?php get_template_part('partials/header', null, ['placeholder' => true]); ?>
 
-    <div class="page-section">
-        <div class="container page-section__container">
-            <div class="page-section__breadcrumbs">
-                <div class="breadcrumbs">
-                    <a href="<?php echo get_the_permalink(2); ?>" class="breadcrumbs__link">
-                        <?php echo get_the_title(2); ?>
-                    </a>
-                    <span class="breadcrumbs__separator"></span>
-                    <span class="breadcrumbs__current"><?php the_title(); ?></span>
-                </div>
+    <div class="pb-16 md:pb-24 lg:pb-48">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="<?php echo get_the_permalink(2); ?>" class="breadcrumbs__link">
+                    <?php echo get_the_title(2); ?>
+                </a>
+                <span class="breadcrumbs__separator"></span>
+                <span class="breadcrumbs__current"><?php the_title(); ?></span>
             </div>
 
-            <h1 class="page-section__title mb-8"><?php the_title(); ?></h1>
+            <h1 class="page-title mb-8"><?php the_title(); ?></h1>
 
             <div class="about-details">
                 <?php if ($crb_temple_name = carbon_get_the_post_meta('crb_temple_name')): ?>
@@ -49,10 +47,10 @@ $shrines = new WP_Query([
                 <?php endif; ?>
             </div>
 
-            <div class="page-section__content content"><?php the_content(); ?></div>
+            <div class="page-content content mt-8 md:mt-12 lg:mt-14"><?php the_content(); ?></div>
 
             <?php if ($shrines->have_posts()): ?>
-            <div class="about-shrines">
+            <div class="about-shrines my-16 md:my-24 lg:my-32">
                 <div class="about-shrines__title">Главные святыни храма</div>
                 <div class="shrine-carousel">
                     <div class="shrine-carousel__view" data-shrine-carousel>

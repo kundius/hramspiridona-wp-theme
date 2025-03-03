@@ -68,4 +68,17 @@ function register_carbon_fields()
         Field::make('text', 'name', 'Название'),
       ]),
     ]);
+
+  Container::make('post_meta', 'Записки')
+    ->where('post_type', '=', 'page')
+    ->where('post_template', '=', 'template-notes.php')
+    ->add_fields([
+      Field::make('complex', 'crb_commemoration_types', 'Типы помина')->add_fields([
+        Field::make('text', 'name', 'Название'),
+      ]),
+    ]);
+
+  Container::make('post_meta', 'Видео')
+    ->where('post_type', '=', 'preaching')
+    ->add_fields([Field::make('text', 'crb_embed_url', 'Ссылка на видео')]);
 }

@@ -1,3 +1,7 @@
+<?php if (isset($args['placeholder']) && $args['placeholder']): ?>
+<div class="header-placeholder"></div>
+<?php endif; ?>
+
 <div class="header" data-sticky-header data-mobile-menu-state="closed">
   <div class="container header__container">
     <a href="/" class="header__logo" title="<?php bloginfo('name'); ?>"></a>
@@ -33,7 +37,3 @@
     </a>
   </div>
 </div>
-
-<?php if (isset($args['placeholder']) && $args['placeholder']): ?>
-<div class="header-placeholder"></div>
-<?php endif; ?>
