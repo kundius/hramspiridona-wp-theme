@@ -30,8 +30,6 @@ export function applyNotesForm(form) {
     const formData = new FormData(e.target)
     formData.append('action', 'notes_action')
 
-    console.log(formData)
-
     fetch(e.target.action, {
       method: 'post',
       body: formData

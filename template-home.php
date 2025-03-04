@@ -2,6 +2,26 @@
 /*
 Template Name: Главная
 */
+$preachings = new WP_Query([
+  'post_type' => 'preaching',
+  'orderby' => [
+    'menu_order' => 'ASC',
+  ],
+  'posts_per_page' => 6,
+]);
+
+$schedule_days = [];
+if ($crb_schedule = carbon_get_post_meta(107, 'crb_schedule')) {
+  foreach ($crb_schedule as $week) {
+    if ($days = $week['days']) {
+      foreach ($days as $day) {
+        if (strtotime('now') < strtotime($day['date'])) {
+          $schedule_days[] = $day;
+        }
+      }
+    }
+  }
+}
 ?>
 <!DOCTYPE html>
 <html class="no-js" <?php language_attributes(); ?> itemscope itemtype="http://schema.org/WebSite">
@@ -43,7 +63,9 @@ Template Name: Главная
               Святой Спиридон Тримифунтский
             </div>
             <div class="home-about__more">
-              <a href="" class="ui-more">Подробнее<span class="ui-more__arrow"></span></a>
+              <a href="<?php the_permalink(
+                118
+              ); ?>" class="ui-more">Подробнее<span class="ui-more__arrow"></span></a>
             </div>
           </div>
         </div>
@@ -61,190 +83,53 @@ Template Name: Главная
           <div class="schedule-carousel__view" data-schedule-carousel>
             <div class="schedule-carousel__container">
 
-              <div class="schedule-carousel__slide">
-                <div class="schedule-item">
-                  <div class="schedule-item__title">Понедельник</div>
-                  <div class="schedule-item__date">24 февраля 2025</div>
-                  <div class="schedule-item__rows">
-                    <div class="schedule-item__row">
-                      <div class="schedule-item__row-title">
-                        Утро
-                      </div>
-                      <div class="schedule-item__row-content">
-                        <div class="schedule-item__row-time">
-                          08.00
-                        </div>
-                        <div class="schedule-item__row-arrow"></div>
-                        <div class="schedule-item__row-name">
-                          Исповедь, литургия
-                        </div>
-                      </div>
-                    </div>
-                    <div class="schedule-item__row">
-                      <div class="schedule-item__row-title">
-                        Вечер
-                      </div>
-                      <div class="schedule-item__row-content">
-                        <div class="schedule-item__row-time">
-                          08.00
-                        </div>
-                        <div class="schedule-item__row-arrow"></div>
-                        <div class="schedule-item__row-name">
-                          Исповедь, литургия
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <?php foreach ($schedule_days as $day):
 
-              <div class="schedule-carousel__slide">
-                <div class="schedule-item">
-                  <div class="schedule-item__title">Понедельник</div>
-                  <div class="schedule-item__date">24 февраля 2025</div>
-                  <div class="schedule-item__rows">
-                    <div class="schedule-item__row">
-                      <div class="schedule-item__row-title">
-                        Утро
-                      </div>
-                      <div class="schedule-item__row-content">
-                        <div class="schedule-item__row-time">
-                          08.00
+                  $week_n = wp_date('N', strtotime($day['date']));
+                  $cls = '';
+                  if ($week_n == '7' || $week_n == '6') {
+                    $cls = ' schedule-item_weekend';
+                  }
+                  ?>
+                    <div class="schedule-carousel__slide">
+                        <div class="schedule-item<?php echo $cls; ?>">
+                            <div class="schedule-item__title">
+                                <?php echo wp_date('l', strtotime($day['date'])); ?>
+                            </div>
+                            <div class="schedule-item__date">
+                                <?php echo wp_date('j F Y', strtotime($day['date'])); ?>
+                            </div>
+                            <div class="schedule-item__desc">
+                                <?php echo $day['desc']; ?>
+                            </div>
+                            <?php if ($parts = $day['parts']): ?>
+                            <div class="schedule-item__rows">
+                                <?php foreach ($parts as $part): ?>
+                                <div class="schedule-item__row">
+                                    <div class="schedule-item__row-title">
+                                        <?php echo $part['name']; ?>
+                                    </div>
+                                    <?php if ($items = $part['items']): ?>
+                                    <?php foreach ($items as $item): ?>
+                                    <div class="schedule-item__row-content">
+                                        <div class="schedule-item__row-time">
+                                            <?php echo $item['time']; ?>
+                                        </div>
+                                        <div class="schedule-item__row-arrow"></div>
+                                        <div class="schedule-item__row-name">
+                                            <?php echo $item['name']; ?>
+                                        </div>
+                                    </div>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <?php endif; ?>
                         </div>
-                        <div class="schedule-item__row-arrow"></div>
-                        <div class="schedule-item__row-name">
-                          Исповедь, литургия
-                        </div>
-                      </div>
                     </div>
-                    <div class="schedule-item__row">
-                      <div class="schedule-item__row-title">
-                        Вечер
-                      </div>
-                      <div class="schedule-item__row-content">
-                        <div class="schedule-item__row-time">
-                          08.00
-                        </div>
-                        <div class="schedule-item__row-arrow"></div>
-                        <div class="schedule-item__row-name">
-                          Исповедь, литургия
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="schedule-carousel__slide">
-                <div class="schedule-item">
-                  <div class="schedule-item__title">Понедельник</div>
-                  <div class="schedule-item__date">24 февраля 2025</div>
-                  <div class="schedule-item__rows">
-                    <div class="schedule-item__row">
-                      <div class="schedule-item__row-title">
-                        Утро
-                      </div>
-                      <div class="schedule-item__row-content">
-                        <div class="schedule-item__row-time">
-                          08.00
-                        </div>
-                        <div class="schedule-item__row-arrow"></div>
-                        <div class="schedule-item__row-name">
-                          Исповедь, литургия
-                        </div>
-                      </div>
-                    </div>
-                    <div class="schedule-item__row">
-                      <div class="schedule-item__row-title">
-                        Вечер
-                      </div>
-                      <div class="schedule-item__row-content">
-                        <div class="schedule-item__row-time">
-                          08.00
-                        </div>
-                        <div class="schedule-item__row-arrow"></div>
-                        <div class="schedule-item__row-name">
-                          Исповедь, литургия
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="schedule-carousel__slide">
-                <div class="schedule-item">
-                  <div class="schedule-item__title">Понедельник</div>
-                  <div class="schedule-item__date">24 февраля 2025</div>
-                  <div class="schedule-item__rows">
-                    <div class="schedule-item__row">
-                      <div class="schedule-item__row-title">
-                        Утро
-                      </div>
-                      <div class="schedule-item__row-content">
-                        <div class="schedule-item__row-time">
-                          08.00
-                        </div>
-                        <div class="schedule-item__row-arrow"></div>
-                        <div class="schedule-item__row-name">
-                          Исповедь, литургия
-                        </div>
-                      </div>
-                    </div>
-                    <div class="schedule-item__row">
-                      <div class="schedule-item__row-title">
-                        Вечер
-                      </div>
-                      <div class="schedule-item__row-content">
-                        <div class="schedule-item__row-time">
-                          08.00
-                        </div>
-                        <div class="schedule-item__row-arrow"></div>
-                        <div class="schedule-item__row-name">
-                          Исповедь, литургия
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="schedule-carousel__slide">
-                <div class="schedule-item">
-                  <div class="schedule-item__title">Понедельник</div>
-                  <div class="schedule-item__date">24 февраля 2025</div>
-                  <div class="schedule-item__rows">
-                    <div class="schedule-item__row">
-                      <div class="schedule-item__row-title">
-                        Утро
-                      </div>
-                      <div class="schedule-item__row-content">
-                        <div class="schedule-item__row-time">
-                          08.00
-                        </div>
-                        <div class="schedule-item__row-arrow"></div>
-                        <div class="schedule-item__row-name">
-                          Исповедь, литургия
-                        </div>
-                      </div>
-                    </div>
-                    <div class="schedule-item__row">
-                      <div class="schedule-item__row-title">
-                        Вечер
-                      </div>
-                      <div class="schedule-item__row-content">
-                        <div class="schedule-item__row-time">
-                          08.00
-                        </div>
-                        <div class="schedule-item__row-arrow"></div>
-                        <div class="schedule-item__row-name">
-                          Исповедь, литургия
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    <?php
+                endforeach; ?>
 
             </div>
           </div>
@@ -254,11 +139,12 @@ Template Name: Главная
         </div>
 
         <div class="home-schedule-section__more">
-          <a href="" class="ui-more">Полное расписание</a>
+          <a href="<?php the_permalink(107); ?>" class="ui-more">Полное расписание</a>
         </div>
       </div>
     </div>
 
+    <?php if ($preachings->have_posts()): ?>
     <div class="home-preaching-section">
       <div class="container">
         <div class="home-preaching-section__headline">
@@ -266,57 +152,41 @@ Template Name: Главная
             <div class="home-preaching-section__headline-title">
               Проповеди
             </div>
-            <a href="" class="home-preaching-section__headline-more">смотреть все</a>
+            <a href="<?php the_permalink(
+              90
+            ); ?>" class="home-preaching-section__headline-more">смотреть все</a>
           </div>
         </div>
 
         <div class="home-preaching-carousel">
             <div class="home-preaching-carousel__view" data-home-preaching-carousel>
                 <div class="home-preaching-carousel__container">
+                    <?php while ($preachings->have_posts()): ?>
+                    <?php $preachings->the_post(); ?>
                     <div class="home-preaching-carousel__slide">
                         <div class="home-preaching-section__item">
-                            <a href="#video-0" target="_blank" data-fslightbox="gallery" class="home-preaching-section__item-link">
-                            <img width="480" height="320" src="https://xn----8sbbbsrepehoee0qnah.xn--p1ai/wp-content/uploads/2024/12/01-gotovaya-banya-pod-klyuch-skandinaviya-7-2_3-480x320.jpg" alt="" decoding="async" loading="lazy" class="home-preaching-section__item-image">
-                            <span class="home-preaching-section__item-play"></span>
+                            <a href="#video-<?php echo get_the_ID(); ?>" target="_blank" data-fslightbox="gallery" class="home-preaching-section__item-link">
+                                <?php the_post_thumbnail('original'); ?>
+                                <span class="home-preaching-section__item-play"></span>
                             </a>
+                            <?php if (
+                              $crb_embed_url = carbon_get_the_post_meta('crb_embed_url')
+                            ): ?>
                             <div class="hidden">
-                            <iframe src="https://rutube.ru/play/embed/af32a23a57e09654b12ad4407000f8c7/" id="video-0" width="1920px" height="1080px" frameborder="0" allow="fullscreen" allowfullscreen=""></iframe>
+                                <iframe
+                                src="<?php echo $crb_embed_url; ?>"
+                                id="video-<?php echo get_the_ID(); ?>"
+                                width="1920px"
+                                height="1080px"
+                                frameBorder="0"
+                                allow="fullscreen"
+                                allowFullScreen></iframe>
                             </div>
+                            <?php endif; ?>
                         </div>
                     </div>
-                    <div class="home-preaching-carousel__slide">
-                        <div class="home-preaching-section__item">
-                            <a href="#video-0" target="_blank" data-fslightbox="gallery" class="home-preaching-section__item-link">
-                            <img width="480" height="320" src="https://xn----8sbbbsrepehoee0qnah.xn--p1ai/wp-content/uploads/2024/12/01-gotovaya-banya-pod-klyuch-skandinaviya-7-2_3-480x320.jpg" alt="" decoding="async" loading="lazy" class="home-preaching-section__item-image">
-                            <span class="home-preaching-section__item-play"></span>
-                            </a>
-                            <div class="hidden">
-                            <iframe src="https://rutube.ru/play/embed/af32a23a57e09654b12ad4407000f8c7/" id="video-0" width="1920px" height="1080px" frameborder="0" allow="fullscreen" allowfullscreen=""></iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="home-preaching-carousel__slide">
-                        <div class="home-preaching-section__item">
-                            <a href="#video-0" target="_blank" data-fslightbox="gallery" class="home-preaching-section__item-link">
-                            <img width="480" height="320" src="https://xn----8sbbbsrepehoee0qnah.xn--p1ai/wp-content/uploads/2024/12/01-gotovaya-banya-pod-klyuch-skandinaviya-7-2_3-480x320.jpg" alt="" decoding="async" loading="lazy" class="home-preaching-section__item-image">
-                            <span class="home-preaching-section__item-play"></span>
-                            </a>
-                            <div class="hidden">
-                            <iframe src="https://rutube.ru/play/embed/af32a23a57e09654b12ad4407000f8c7/" id="video-0" width="1920px" height="1080px" frameborder="0" allow="fullscreen" allowfullscreen=""></iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="home-preaching-carousel__slide">
-                        <div class="home-preaching-section__item">
-                            <a href="#video-0" target="_blank" data-fslightbox="gallery" class="home-preaching-section__item-link">
-                            <img width="480" height="320" src="https://xn----8sbbbsrepehoee0qnah.xn--p1ai/wp-content/uploads/2024/12/01-gotovaya-banya-pod-klyuch-skandinaviya-7-2_3-480x320.jpg" alt="" decoding="async" loading="lazy" class="home-preaching-section__item-image">
-                            <span class="home-preaching-section__item-play"></span>
-                            </a>
-                            <div class="hidden">
-                            <iframe src="https://rutube.ru/play/embed/af32a23a57e09654b12ad4407000f8c7/" id="video-0" width="1920px" height="1080px" frameborder="0" allow="fullscreen" allowfullscreen=""></iframe>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endwhile; ?>
+                    <?php wp_reset_postdata(); ?>
                 </div>
             </div>
 
@@ -325,10 +195,13 @@ Template Name: Главная
         </div>
 
         <div class="home-preaching-section__more">
-          <a href="" class="ui-more">Подробнее<span class="ui-more__arrow"></span></a>
+          <a href="<?php the_permalink(
+            90
+          ); ?>" class="ui-more">Подробнее<span class="ui-more__arrow"></span></a>
         </div>
       </div>
     </div>
+    <?php endif; ?>
 
     <div class="home-music-section">
       <div class="container">
@@ -336,7 +209,9 @@ Template Name: Главная
           <div class="home-music__title">strannik-music</div>
           <div class="home-music__desc">Духовные канты отца Геннадия — о трудном пути человека&nbsp;к&nbsp;покаянию,<br> о&nbsp;заблудшем и&nbsp;пробуждающемся к&nbsp;познанию Бога сердце, о&nbsp;земных и&nbsp;небесных странствиях души&nbsp;к&nbsp;Богу</div>
           <div class="home-music__more">
-            <a href="" class="ui-more">Подробнее<span class="ui-more__arrow"></span></a>
+            <a href="<?php the_permalink(
+              116
+            ); ?>" class="ui-more">Подробнее<span class="ui-more__arrow"></span></a>
           </div>
         </div>
       </div>

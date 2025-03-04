@@ -11,6 +11,7 @@
 @use 'preachings';
 @use 'notes';
 @use 'schedule';
+@use 'answers';
 
 :root {
   --header-height: 68px;
@@ -282,6 +283,7 @@ body {
   padding-bottom: 50px;
   position: relative;
   margin-top: 64px;
+  text-wrap: balance;
 
   @include max-lg {
     font-size: 36px;

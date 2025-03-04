@@ -76,11 +76,7 @@
             <div class="footer__counters"><?php echo carbon_get_theme_option(
               'crb_theme_counters'
             ); ?></div>
-            <?php if ($crb_sitemap_page = carbon_get_theme_option('crb_sitemap_page')): ?>
-            <a href="<?php the_permalink(
-              $crb_sitemap_page[0]['id']
-            ); ?>" class="footer__sitemap">Карта сайта</a>
-            <?php endif; ?>
+            <a href="<?php the_permalink(128); ?>" class="footer__sitemap">Карта сайта</a>
         </div>
 
         <a href="https://domenart-studio.ru/" target="_blank" class="footer__creator">

@@ -10,11 +10,15 @@ import { initSnow } from './src/scripts/snow'
 import { initHomePreachingCarousel } from './src/scripts/home-preaching-carousel'
 import { initShrineCarousel } from './src/scripts/shrine-carousel'
 import { initNotesForm } from './src/scripts/notes-form'
+import { initFaq } from './src/scripts/faq'
+import { initQuestionForm } from './src/scripts/question-form'
 
 initStickyHeader()
 initNotesForm()
+initQuestionForm()
 initMobileMenu()
 initSnow()
 initScheduleCarousel()
 initHomePreachingCarousel()
 initShrineCarousel()
+initFaq()

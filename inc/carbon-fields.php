@@ -19,24 +19,6 @@ function register_carbon_fields()
         Field::make('image', 'icon', 'Иконка')->set_width(50),
         Field::make('text', 'url', 'Ссылка')->set_width(50),
       ]),
-      Field::make('association', 'crb_sitemap_page', 'Страница карта сайта')
-        ->set_max(1)
-        ->set_min(1)
-        ->set_types([
-          [
-            'type' => 'post',
-            'post_type' => 'page',
-          ],
-        ]),
-      Field::make('association', 'crb_agreement_page', 'Страница пользовательское соглашение')
-        ->set_max(1)
-        ->set_min(1)
-        ->set_types([
-          [
-            'type' => 'post',
-            'post_type' => 'page',
-          ],
-        ]),
     ]);
 
   Container::make('post_meta', 'SEO')
@@ -123,6 +105,23 @@ function register_carbon_fields()
           'plural_name' => 'Недели',
           'singular_name' => 'Неделя',
         ]),
+    ]);
+
+  Container::make('post_meta', 'Ответы на вопросы')
+    ->where('post_type', '=', 'page')
+    ->where('post_template', '=', 'template-answers.php')
+    ->add_fields([
+      Field::make('complex', 'crb_answers', '')
+        ->add_fields([
+          Field::make('textarea', 'question_content', 'Содержимое вопроса'),
+          Field::make('textarea', 'answer_content', 'Содержимое ответа'),
+          Field::make('separator', 'author', 'Автор ответа'),
+          Field::make('text', 'author_name', 'Имя'),
+          Field::make('text', 'author_rank', 'Сан'),
+          Field::make('image', 'author_photo', 'Фото'),
+        ])
+        ->set_layout('tabbed-vertical')
+        ->set_header_template('<%- question_content %>'),
     ]);
 
   Container::make('post_meta', 'Видео')
