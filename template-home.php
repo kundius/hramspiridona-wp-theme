@@ -16,8 +16,8 @@ if ($crb_schedule = carbon_get_post_meta(107, 'crb_schedule')) {
     if ($days = $week['days']) {
       foreach ($days as $day) {
         if (strtotime('now') < strtotime($day['date'])) {
-          $schedule_days[] = $day;
         }
+          $schedule_days[] = $day;
       }
     }
   }
@@ -92,6 +92,7 @@ if ($crb_schedule = carbon_get_post_meta(107, 'crb_schedule')) {
                   }
                   ?>
                     <div class="schedule-carousel__slide">
+                      <?php echo strtotime('now'); echo strtotime($day['date']); ?>
                         <div class="schedule-item<?php echo $cls; ?>">
                             <div class="schedule-item__title">
                                 <?php echo wp_date('l', strtotime($day['date'])); ?>
