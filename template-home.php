@@ -43,7 +43,7 @@ if ($crb_schedule = carbon_get_post_meta(107, 'crb_schedule')) {
             Русская Православная Церковь
           </div>
           <div class="home-intro__title">
-            Храм Святого<br>
+            Храм Святителя<br>
             Спиридона<br>
             Тримифунтского
           </div>
@@ -76,7 +76,7 @@ if ($crb_schedule = carbon_get_post_meta(107, 'crb_schedule')) {
       <div class="container">
         <div class="home-schedule-section__title">
           Расписание богослужений в храме<br>
-          Святого Спиридона Тримифунтского
+          Святителя Спиридона Тримифунтского
         </div>
 
         <div class="schedule-carousel">
@@ -92,7 +92,11 @@ if ($crb_schedule = carbon_get_post_meta(107, 'crb_schedule')) {
                   }
                   ?>
                     <div class="schedule-carousel__slide">
-                      <?php echo strtotime('now'); echo strtotime($day['date']); ?>
+                      <div hidden>
+                        <?php echo strtotime('now') < strtotime($day['date']); ?><br>
+                        <?php echo strtotime('now'); ?><br>
+                        <?php echo strtotime($day['date']); ?>
+                      </div>
                         <div class="schedule-item<?php echo $cls; ?>">
                             <div class="schedule-item__title">
                                 <?php echo wp_date('l', strtotime($day['date'])); ?>
