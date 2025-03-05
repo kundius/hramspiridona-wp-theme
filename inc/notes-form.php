@@ -40,10 +40,11 @@ function ajax_action_notes()
       $rows[] = 'Тип помина: ' . sanitize_text_field($_POST['type']);
     }
     if (!empty($_POST['names'])) {
+      $rows[] = "\n";
       $rows[] = 'Имена поминаемых:';
       foreach ($_POST['names'] as $name) {
         if (!empty($name)) {
-          $rows[] = "\n" . $name;
+          $rows[] = $name;
         }
       }
     }
