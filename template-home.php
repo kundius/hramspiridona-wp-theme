@@ -60,7 +60,7 @@ if ($crb_schedule = carbon_get_post_meta(107, 'crb_schedule')) {
               По благословению Высокопреосвященнейшего ЛЕОНТИЯ, митрополита Воронежского и Лискинского
             </div>
             <div class="home-about__title">
-              Святой Спиридон Тримифунтский
+              Святитель Спиридон Тримифунтский
             </div>
             <div class="home-about__more">
               <a href="<?php the_permalink(
