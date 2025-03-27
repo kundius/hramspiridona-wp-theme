@@ -243,6 +243,10 @@
 .question-form__layout-field {
 }
 
+.question-form__layout-field_wide {
+  grid-column: 1 / 3;
+}
+
 .question-form-field {
 }
 
