@@ -266,6 +266,25 @@
   }
 }
 
+.question-form-field__textarea {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(228, 233, 240);
+  border-radius: 12px;
+  background-color: rgb(255, 255, 255);
+  padding: 12px 24px;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+
+  @include max-md {
+    font-size: 18px;
+    padding: 8px 16px;
+  }
+}
+
 .question-form__layout-submit {
   grid-column: span 2;
   display: flex;
