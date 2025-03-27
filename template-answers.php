@@ -80,10 +80,16 @@ Template Name: Ответы на вопросы
                             <input type="text" name="client" class="question-form-field__input" placeholder="Представьтесь">
                         </div>
                     </div>
-
+                  
                     <div class="question-form__layout-field">
                         <div class="question-form-field">
-                            <input type="text" name="question" class="question-form-field__input" placeholder="Задайте вопрос">
+                            <input type="text" name="email" class="question-form-field__input" placeholder="Ваш e-mail">
+                        </div>
+                    </div>
+
+                    <div class="question-form__layout-field question-form__layout-field_wide">
+                        <div class="question-form-field">
+                            <textarea type="text" name="question" class="question-form-field__textarea" placeholder="Задайте вопрос"></textarea>
                         </div>
                     </div>
 
