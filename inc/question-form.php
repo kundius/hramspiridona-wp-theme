@@ -23,6 +23,10 @@ function ajax_action_question()
     $errors['question'] = 'Задайте Ваш вопрос.';
   }
 
+  if (empty($_POST['email'])) {
+    $errors['email'] = 'Укажите Ваш e-mail.';
+  }
+
   if ($errors) {
     wp_send_json_error($errors);
   } else {
@@ -35,6 +39,9 @@ function ajax_action_question()
     $rows = [];
     if (!empty($_POST['client'])) {
       $rows[] = 'Имя: ' . sanitize_text_field($_POST['client']);
+    }
+    if (!empty($_POST['email'])) {
+      $rows[] = 'Отправитель: ' . sanitize_text_field($_POST['email']);
     }
     if (!empty($_POST['question'])) {
       $rows[] = 'Вопрос: ' . sanitize_text_field($_POST['question']);
