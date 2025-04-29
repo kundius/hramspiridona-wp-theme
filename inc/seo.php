@@ -84,8 +84,8 @@ add_action('wp_head', function () {
         echo '<meta property="og:image:width" content="1024">' . "\n";
         echo '<meta property="og:image:height" content="1024">' . "\n";
     } else {
-        echo '<meta property="og:image" content="https://hramspiridona-vrn.ru/wp-content/themes/hramspiridona-wp-theme/dist/assets/bg-intro.jpg" />' . "\n";
-        echo '<meta property="og:image:width" content="1920">' . "\n";
-        echo '<meta property="og:image:height" content="1064">' . "\n";
+        echo '<meta property="og:image" content="https://hramspiridona-vrn.ru/wp-content/uploads/2025/04/xxxl.jpg" />' . "\n";
+        echo '<meta property="og:image:width" content="600">' . "\n";
+        echo '<meta property="og:image:height" content="800">' . "\n";
     }
 });
