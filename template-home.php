@@ -15,7 +15,7 @@ if ($crb_schedule = carbon_get_post_meta(107, 'crb_schedule')) {
   foreach ($crb_schedule as $week) {
     if ($days = $week['days']) {
       foreach ($days as $day) {
-        print_r($day['date'], strtotime('now'), strtotime($day['date']));
+        print_r($day['date'] . '/' . strtotime('now') . '/' . strtotime($day['date']));
         if (strtotime('now') <= strtotime($day['date'])) {
           $schedule_days[] = $day;
         }
