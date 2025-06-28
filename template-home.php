@@ -10,7 +10,7 @@ $preachings = new WP_Query([
   'posts_per_page' => 6,
 ]);
 
-$schedule_days = 
+$schedule_days = [];
 $today = date('Y-m-d');
 if ($crb_schedule = carbon_get_post_meta(107, 'crb_schedule')) {
   foreach ($crb_schedule as $week) {
